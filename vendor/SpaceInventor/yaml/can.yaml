@@ -1,0 +1,7 @@
+#The address needs to be 0 because we don't want the pi address to step on other devices
+- name: "CAN"
+  driver: "can"
+  device: "can0"
+  addr: 0
+  netmask: 8
+  default: true
