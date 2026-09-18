@@ -1,0 +1,17 @@
+[Unit]
+Description=UDP Capture Service for x123 science data
+After=network.target
+PartOf=det-parent.target
+
+[Service]
+Type=notify
+Restart=always
+RestartSec=1
+User=sat
+WorkingDirectory=/SAT/LIVE/DET-SCI/
+EnvironmentFile=/etc/environment
+ExecStartPre=mkdir -p "rebinned"
+ExecStart=udp_capture -l $X123_SCI_PORT -b $X123_SCI_BASE -T $X123_SCI_TIME -t $X123_SCI_IDLE -p udp_post_process
+
+[Install]
+WantedBy=multi-user.target

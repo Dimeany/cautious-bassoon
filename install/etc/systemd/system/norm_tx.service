@@ -1,0 +1,15 @@
+[Unit]
+Description=Flight NORM Transmitter
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=sat
+EnvironmentFile=/etc/environment
+WorkingDirectory=/SAT/HOT/
+ExecStart=norm addr ${NORM_ADDR} instance normtx sendfile ${NORM_HOTD} txonly rate ${NORM_RATE} segment ${NORM_SEGM} txrobustfactor 0 updatesOnly repeatcount -1 processor link_norm_tx_process_breakout
+
+[Install]
+WantedBy=multi-user.target

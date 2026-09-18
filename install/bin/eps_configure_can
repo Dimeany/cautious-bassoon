@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Clearing Previous CAN settings
+sudo ip link set dev can0 down || true
+sudo ip link set can0 down || true
+
+# Applying our settings in accordance with how CSP does it
+sudo ip link set dev can0 up type can bitrate 1000000 restart-ms 100 sample-point 0.750 sjw 2
+sudo ip link set dev can0 txqueuelen 100

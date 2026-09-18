@@ -1,0 +1,17 @@
+[Unit]
+Description=CDH Service
+After=network.target cdh-udpcapture.service
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=sat
+EnvironmentFile=/etc/environment
+
+# When building, the EXACT version of this executable differs by name. The script 'flash_5_enable_services'
+# deletes the IMPRESS version and renames the EXACT version to this name.
+ExecStart=cdh_service
+
+[Install]
+WantedBy=multi-user.target

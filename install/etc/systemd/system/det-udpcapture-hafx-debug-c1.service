@@ -1,0 +1,15 @@
+[Unit]
+Description=UDP Capture Service for hafx debug data for c1 detector
+After=network.target
+PartOf=det-parent.target
+
+[Service]
+Type=notify
+Restart=always
+RestartSec=1
+User=sat
+WorkingDirectory=/SAT/LIVE/DET-SCI/
+EnvironmentFile=/etc/environment
+ExecStart=udp_capture -l $HAFX_C1_DBG_PORT -b $HAFX_C1_DBG_BASE -T $HAFX_C1_DBG_TIME -t $HAFX_C1_DBG_IDLE -m $HAFX_C1_DBG_MAXF -p udp_post_process
+[Install]
+WantedBy=multi-user.target

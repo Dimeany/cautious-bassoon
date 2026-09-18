@@ -1,0 +1,12 @@
+# can.yaml
+# Simeon Shaffar 4/30/2025
+# This yaml file is used to tell CSP to initialize a CAN interface from the can0 "network"
+# interface generated based off of the physical CAN connection to EPS
+
+# The address CANNOT be 0 
+- name: "CAN"
+  driver: "can"
+  device: "can0"
+  addr: 20
+  netmask: 8
+  default: true

@@ -1,0 +1,14 @@
+[Unit]
+Description=GPS interface
+After=network.target gps-udpcapture.service
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=sat
+EnvironmentFile=/etc/environment
+ExecStart=gps_service
+
+[Install]
+WantedBy=multi-user.target

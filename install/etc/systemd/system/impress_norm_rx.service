@@ -1,0 +1,15 @@
+[Unit]
+Description=Flight NORM receiver
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=sat
+EnvironmentFile=/etc/environment
+WorkingDirectory=/SAT/RECV/
+ExecStart=exec norm addr 127.0.0.1/50007 instance normrx rxcachedir ${ROOT_DIR}/RECV silentReceiver loopback on rxsockbuffer 10M
+
+[Install]
+WantedBy=multi-user.target

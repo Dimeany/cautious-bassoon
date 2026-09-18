@@ -1,0 +1,18 @@
+[Unit]
+Description=COMMS Systemd Service
+After=network.target
+Before=comms_bft_recv.service
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+EnvironmentFile=/etc/environment
+User=sat
+
+# When building, the EXACT version of this executable differs by name. The script 'flash_5_enable_services'
+# deletes the IMPRESS version and renames the EXACT version to this name.
+ExecStart=comms_service
+
+[Install]
+WantedBy=multi-user.target

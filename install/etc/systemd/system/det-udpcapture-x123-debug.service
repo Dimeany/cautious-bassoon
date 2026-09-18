@@ -1,0 +1,16 @@
+[Unit]
+Description=UDP Capture Service for x123 debug data
+After=network.target
+PartOf=det-parent.target
+
+[Service]
+Type=notify
+Restart=always
+RestartSec=1
+User=sat
+WorkingDirectory=/SAT/LIVE/DET-SCI/
+EnvironmentFile=/etc/environment
+ExecStart=udp_capture -l $X123_DBG_PORT -b $X123_DBG_BASE -T $X123_DBG_TIME -t $X123_DBG_IDLE -m $X123_DBG_MAXF -p udp_post_process
+
+[Install]
+WantedBy=multi-user.target

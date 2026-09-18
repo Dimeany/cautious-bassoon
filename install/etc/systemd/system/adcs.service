@@ -1,0 +1,19 @@
+[Unit]
+Description=ADCS interface
+
+# After= only orders services relative to other services that are
+# actually starting.  If adcs-commission-udpcapture.service is not
+# starting, then its presence in After= will have no effect.
+
+After=network.target adcs-udpcapture.service adcs-commission-udpcapture.service
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=sat
+EnvironmentFile=/etc/environment
+ExecStart=adcs_service
+
+[Install]
+WantedBy=multi-user.target

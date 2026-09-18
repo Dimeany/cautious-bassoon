@@ -1,0 +1,11 @@
+#!/bin/bash
+# grab last 24 hours of journal, compress, and move to /SAT/HOT/JOUR
+
+cd /SAT/LIVE/JOUR/
+DATE=`date +%Y-%j-%H-%M-%S`
+FILE="jour_"$DATE.txt
+echo "Sending last 24 hours of journal to "$FILE
+
+journalctl --since "24 hours ago" &> $FILE
+gzip $FILE
+mv $FILE".gz" /SAT/HOT/JOUR/

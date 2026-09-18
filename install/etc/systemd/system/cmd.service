@@ -1,0 +1,15 @@
+[Unit]
+Description=Command Service
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=sat
+EnvironmentFile=/etc/environment
+WorkingDirectory=/SAT/HOT/CMD
+ExecStart=cmd_service $CMD_EXECUTABLE_ARGS
+
+[Install]
+WantedBy=multi-user.target

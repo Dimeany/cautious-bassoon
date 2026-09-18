@@ -1,0 +1,16 @@
+[Unit]
+Description=EPS service
+Wants=sys-subsystem-net-devices-can0.device
+After=network.target eps-udpcapture.service sys-subsystem-net-devices-can0.device
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=sat
+EnvironmentFile=/etc/environment
+ExecStartPre=-eps_configure_can
+ExecStart=eps_service $EPS_EXECUTABLE_ARGS
+
+[Install]
+WantedBy=multi-user.target

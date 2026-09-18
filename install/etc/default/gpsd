@@ -1,0 +1,13 @@
+# Devices gpsd should collect to at boot time.
+# They need to be read/writeable, either by user gpsd or the group dialout.
+DEVICES="udp://127.0.0.1:2947 /dev/pps0"
+
+# Other options you want to pass to gpsd
+GPSD_OPTIONS="-n -b"
+
+# Automatically hot add/remove USB GPS devices via gpsdctl
+USBAUTO="false"
+
+START_DAEMON="true"
+
+GPSD_SOCKET="/var/run/gpsd.sock"

@@ -1,0 +1,15 @@
+#!/bin/bash
+# Do full list of /SAT/HOT, compress, and move to /SAT/HOT/MISC
+
+DATE=`date +%Y-%j-%H-%M-%S`
+LS_DIR="/SAT/HOT"
+LS_NAME="ls_hot_"
+
+FILE=$LS_NAME$DATE.txt
+echo "Sending $LS_DIR ls -alR to "$FILE
+
+cd /SAT/LIVE/MISC
+ls -alR $LS_DIR > $FILE
+
+gzip $FILE
+mv $FILE".gz" /SAT/HOT/MISC/

@@ -1,0 +1,17 @@
+[Unit]
+Description=UDP Capture Service for ADCS Commisioning
+After=network.target
+
+[Service]
+Type=notify
+Restart=always
+RestartSec=1
+User=sat
+EnvironmentFile=/etc/environment
+WorkingDirectory=/SAT/LIVE/ADCS/
+
+# Note: ADCS commissioning packets are not health packets, so there is no -f forward to CDH.
+ExecStart=udp_capture -l 53004 -b adcs_commissioning -T 300 -f 127.0.0.1:50001 -p 'udp_post_process "$$out_file"'
+
+[Install]
+WantedBy=multi-user.target

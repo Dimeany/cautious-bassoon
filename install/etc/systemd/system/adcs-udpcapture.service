@@ -1,0 +1,15 @@
+[Unit]
+Description=UDP Capture Service for ADCS Health
+After=network.target
+
+[Service]
+Type=notify
+Restart=always
+RestartSec=1
+User=sat
+EnvironmentFile=/etc/environment
+WorkingDirectory=/SAT/LIVE/ADCS/
+ExecStart=udp_capture -l 53001 -b adcs_health -T 3600 -f 127.0.0.1:51002 -f 127.0.0.1:50001 -p 'udp_post_process "$$out_file"'
+
+[Install]
+WantedBy=multi-user.target

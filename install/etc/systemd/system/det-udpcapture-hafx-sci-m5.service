@@ -1,0 +1,16 @@
+[Unit]
+Description=UDP Capture Service for HaFX science data from m5 detector
+After=network.target
+PartOf=det-parent.target
+
+[Service]
+Type=notify
+Restart=always
+RestartSec=1
+User=sat
+WorkingDirectory=/SAT/LIVE/DET-SCI/
+EnvironmentFile=/etc/environment
+ExecStart=udp_capture -l $HAFX_M5_SCI_PORT -b $HAFX_M5_SCI_BASE -T $HAFX_M5_SCI_TIME -t $HAFX_M5_SCI_IDLE -p udp_post_process
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,16 @@
+[Unit]
+Description=UDPCapture for CDH Health Service
+After=network.target
+
+[Service]
+Type=notify
+Restart=always
+RestartSec=1
+User=sat
+WorkingDirectory=/SAT/LIVE/CDH/
+EnvironmentFile=/etc/environment
+ExecStart=udp_capture -l ${CDH_UC_PORT} -b ${CDH_UC_BASE} -T ${CDH_UC_TIME} -t ${CDH_UC_IDLE} -p udp_post_process
+
+
+[Install]
+WantedBy=multi-user.target

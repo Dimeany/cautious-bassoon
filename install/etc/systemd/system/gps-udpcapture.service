@@ -1,0 +1,15 @@
+[Unit]
+Description=UDP Capture Service for GPS Health
+After=network.target
+
+[Service]
+Type=notify
+Restart=always
+RestartSec=1
+User=sat
+EnvironmentFile=/etc/environment
+WorkingDirectory=/SAT/LIVE/GPS/
+ExecStart=udp_capture -l $GPS_UC_PORT -b $GPS_UC_BASE -T $GPS_UC_TIME -t $GPS_UC_IDLE -f $GPS_UC_FRWD -p udp_post_process
+
+[Install]
+WantedBy=multi-user.target

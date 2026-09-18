@@ -1,0 +1,15 @@
+[Unit]
+Description=UDP Capture Service for EPS Health
+After=network.target
+
+[Service]
+Type=notify
+Restart=always
+RestartSec=1
+User=sat
+EnvironmentFile=/etc/environment
+WorkingDirectory=/SAT/LIVE/EPS/
+ExecStart=udp_capture -l $EPS_UC_PORT -b $EPS_UC_BASE -T $EPS_UC_TIME -t $EPS_UC_IDLE -f $EPS_UC_FRWD -p udp_post_process
+
+[Install]
+WantedBy=multi-user.target

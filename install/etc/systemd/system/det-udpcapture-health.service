@@ -1,0 +1,17 @@
+[Unit]
+Description=UDP Capture Service for DET Health
+After=network.target
+PartOf=det-parent.target
+
+[Service]
+Type=notify
+Restart=always
+RestartSec=1
+User=sat
+WorkingDirectory=/SAT/LIVE/DET/
+EnvironmentFile=/etc/environment
+
+ExecStart=udp_capture -l ${DET_HEALTH_PORT} -b ${DET_UC_BASE} -T ${DET_UC_TIME} -t ${DET_UC_IDLE} -f ${DET_HEALTH_UC_FRWD} -p udp_post_process
+
+[Install]
+WantedBy=multi-user.target

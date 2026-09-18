@@ -1,0 +1,52 @@
+dtparam=i2c_arm=on
+arm_64bit=1
+core_freq=250
+
+# For understanding the "alternate" assignments here,
+# please see https://elinux.org/RPi_BCM2835_GPIOs
+# For documentation on config.txt see
+# https://www.raspberrypi.com/documentation/computers/config_txt.html
+
+# UART setup
+enable_uart=1
+## uart0 (radio)
+dtoverlay=uart0,txd0_pin=14,rxd0_pin=15
+## pins 16, 17 ALT3 are (CTS0, RTS0) for UART0
+gpio=16-17=a3
+## these are extra control flow pins used by the ADV radio in the radio service code (?)
+gpio=18=op=dh
+gpio=19=ip
+
+## uart1 (GPS)
+dtoverlay=uart1,txd1_pin=32,rxd1_pin=33
+
+# Setting up SPI for MCP2515 CAN Converter (EPS Serial)
+dtparam=spi=on
+dtoverlay=spi0-1cs
+dtoverlay=mcp2515-can0,oscillator=16000000,interrupt=25
+
+# RTC and ADCS run on i2c-11 and i2c-1, respectively
+gpio=2-3=a0
+
+# Flight computer RTC gpio pins 0 & 1
+dtoverlay=i2c-rtc-gpio,ds3231,i2c_gpio_sda=0,i2c_gpio_scl=1
+
+# GPS project box RTC gpio pins 28 & 29
+#dtoverlay=i2c-rtc-gpio,ds3231,i2c_gpio_sda=28,i2c_gpio_scl=29
+
+# SD1 only works in the 1-bit bus mode so we configure it as such:
+## One-bit bus (SPI mode) required because of kernel bug on CM3+
+## Poll only at boot
+## 40 MHz clock (slower than usual)
+# dtoverlay=sdio,bus_width=1,poll_once=on,sdio_overclock=40,gpios_34_37
+##### THIS NEEDS TESTING BEFORE IT GETS OFFICIALLY ADDED #####
+
+# pps: inputs
+dtoverlay=pps-gpio,gpiopin=30
+
+gpio=31=ip 
+
+# burnwire lines: outputs, drive low
+gpio=42-43=op,dl
+
+
