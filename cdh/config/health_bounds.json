@@ -1,0 +1,71 @@
+{
+  "ADCS": {
+    "MCUTemperature": { "min": -10.0, "max": 60.0 },
+    "MagnetometerTemp": { "min": -10.0, "max": 60.0 },
+    "XRateSensorTemp": { "min": -10.0, "max": 60.0 },
+    "YRateSensorTemp": { "min": -10.0, "max": 60.0 },
+    "ZRateSensorTemp": { "min": -10.0, "max": 60.0 }
+  },
+
+  "EPS": {
+    "pcdu_temp": { "min": 0.0, "max": 4000.0 },
+    "pdu_mcu_temp": { "min": -5000.0, "max": 6000.0 },
+    "pdu_bus_voltage": { "min": 23000.0, "max": 25000.0 },
+    "pdu_ch_voltage_0": {"min": 4000.0, "max": 6000.0},
+    "pdu_ch_voltage_1": {"min": 4000.0, "max": 6000.0},
+    "pdu_ch_voltage_2": {"min": 4000.0, "max": 6000.0},
+    "pdu_ch_voltage_3": {"min": 4000.0, "max": 6000.0},
+    "pdu_ch_voltage_4": {"min": 4000.0, "max": 6000.0},
+    "pdu_ch_voltage_5": {"min": 4000.0, "max": 6000.0},
+    "pdu_ch_voltage_6": {"min": 4000.0, "max": 6000.0},
+    "pdu_ch_voltage_7": {"min": 4000.0, "max": 6000.0},
+    "pdu_ch_current_0": {"min": 0.0, "max": 100.0},
+    "pdu_ch_current_1": {"min": 0.0, "max": 600.0},
+    "pdu_ch_current_2": {"min": 0.0, "max": 100.0},
+    "pdu_ch_current_3": {"min": 0.0, "max": 500.0},
+    "pdu_ch_current_4": {"min": 0.0, "max": 200.0},
+    "pdu_ch_current_5": {"min": 0.0, "max": 200.0},
+    "pdu_ch_current_6": {"min": 0.0, "max": 200.0},
+    "pdu_ch_current_7": {"min": 0.0, "max": 200.0},
+    "pdu_ch_temp_0": {"min": -5000.0, "max": 6000.0},
+    "pdu_ch_temp_1": {"min": -5000.0, "max": 6000.0},
+    "pdu_ch_temp_2": {"min": -5000.0, "max": 6000.0},
+    "pdu_ch_temp_3": {"min": -5000.0, "max": 6000.0},
+    "pdu_ch_temp_4": {"min": -5000.0, "max": 6000.0},
+    "pdu_ch_temp_5": {"min": -5000.0, "max": 6000.0},
+    "pdu_ch_temp_6": {"min": -5000.0, "max": 6000.0},
+    "pdu_ch_temp_7": {"min": -5000.0, "max": 6000.0}
+  },
+
+  "GPS": {
+    "temperature": { "min": -40.0, "max": 85.0 },
+    "secondary_temp": { "min": -40.0, "max": 85.0 },
+    "number_satellites_tracked": { "min": 3.0, "max": 999.0 },
+    "rcvr_status": { "min": 0.0, "max": 0.0 }
+  },
+
+  "DET": {
+    "c1_arm_temp": { "min": -40.0, "max": 60.0 },
+    "c1_sipm_temp": { "min": -25.0, "max": 50.0 },
+    "m1_arm_temp": { "min": -40.0, "max": 60.0 },
+    "m1_sipm_temp": { "min": -25.0, "max": 50.0 },
+    "m5_arm_temp": { "min": -40.0, "max": 60.0 },
+    "m5_sipm_temp": { "min": -25.0, "max": 50.0 },
+    "x1_arm_temp": { "min": -40.0, "max": 60.0 },
+    "x1_sipm_temp": { "min": -25.0, "max": 50.0 },
+    "x123_board_temp": { "min": -30.0, "max": 80.0 },
+    "x123_det_temp": { "min": -30.0, "max": 80.0 },
+    "c1_oper_voltage": { "min": 3400.0, "max": 3600.0 },
+    "m1_oper_voltage": { "min": 3400.0, "max": 3600.0 },
+    "m5_oper_voltage": { "min": 3400.0, "max": 3600.0 },
+    "x1_oper_voltage": { "min": 3400.0, "max": 3600.0 }
+  },
+
+  "CDH": {
+    "avionics_temp": { "min": -30.0, "max": 85.0 },
+    "flight_temp": { "min": -25.0, "max": 80.0 },
+    "igse_temp": { "min": -30.0, "max": 60.0 },
+    "cpu_temp": { "min": -25.0, "max": 80.0 },
+    "sd_usage_percent": { "min": 0.0, "max": 60.0 }
+  }
+}
